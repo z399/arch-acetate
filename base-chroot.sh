@@ -26,3 +26,7 @@ passwd nebula
 
 EDITOR=vim visudo
 
+rm base-chroot.sh
+
+
+
