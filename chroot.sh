@@ -26,5 +26,3 @@ passwd nebula
 
 EDITOR=vim visudo
 
-reboot
-
