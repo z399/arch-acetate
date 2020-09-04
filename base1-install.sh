@@ -1,8 +1,4 @@
-pacman -Sc
-
 pacman -Syy
-
-pacman -Syu --noconfirm
 
 ping -c 3 protonmail.com
 
@@ -19,4 +15,3 @@ mount /dev/sda2 /mnt
 mkdir -p /mnt/boot/efi 
 
 mount /dev/sda1 /mnt/boot/efi 
-
