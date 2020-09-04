@@ -1,5 +1,3 @@
-pacman -Sc
-
 pacman -Syy
 
 pacstrap /mnt base base-devel linux linux-firmware vim git
@@ -10,4 +8,4 @@ cp base-chroot.sh /mnt/home/base-chroot.sh
 
 chmod +x /mnt/home/base-chroot.sh
 
-arch-chroot /mnt 
+arch-chroot /mnt
