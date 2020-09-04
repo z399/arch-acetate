@@ -1,4 +1,8 @@
+pacman -Sc
+
 pacman -Syy
+
+pacman -Syu
 
 ping -c 3 protonmail.com
 
