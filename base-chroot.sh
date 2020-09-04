@@ -2,7 +2,9 @@ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 hwclock --systohc
 
-vim /etc/locale.gen
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+
+echo en_US ISO-8859-1 >> /etc/locale.gen
 
 locale-gen
 
@@ -24,7 +26,7 @@ useradd -mG wheel nebula
 
 passwd nebula
 
-EDITOR=vim visudo
+echo %wheel ALL=(ALL) ALL >> visudo
 
 rm base-chroot.sh
 
