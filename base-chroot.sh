@@ -26,7 +26,7 @@ useradd -mG wheel nebula
 
 passwd nebula
 
-echo %wheel ALL=(ALL) ALL >> visudo
+EDITOR=vim visudo
 
 rm base-chroot.sh
 
