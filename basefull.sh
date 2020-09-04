@@ -1,8 +1,4 @@
-pacman -Sc
-
 pacman -Syy
-
-pacman -Syu --noconfirm
 
 ping -c 1 protonmail.com
 
