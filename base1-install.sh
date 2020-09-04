@@ -2,7 +2,7 @@ pacman -Sc
 
 pacman -Syy
 
-pacman -Syu
+pacman -Syu --noconfirm
 
 ping -c 3 protonmail.com
 
