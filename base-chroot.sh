@@ -10,7 +10,7 @@ locale-gen
 
 echo LANG=en_US.UTF-8 >> /etc/locale.conf 
 
-echo Arch Linux >> /etc/hostname
+echo Milkyway >> /etc/hostname
 
 passwd 
 
