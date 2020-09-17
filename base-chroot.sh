@@ -1,3 +1,13 @@
+dd if=/dev/zero of=/swapfile bs=1G count=2 status=progress
+
+chmod 600 /swapfile
+
+mkswap /swapfile
+
+swapon /swapfile
+
+echo   /swapfile	none	swap	defaults	0 0 >> /etc/fstab
+
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
 hwclock --systohc
