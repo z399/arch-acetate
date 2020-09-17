@@ -6,7 +6,7 @@ mkswap /swapfile
 
 swapon /swapfile
 
-echo   /swapfile	none	swap	defaults	0 0 >> /etc/fstab
+echo  "/swapfile	none	swap	defaults	0 0" >> /etc/fstab
 
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 
