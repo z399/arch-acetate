@@ -22,8 +22,8 @@ pacstrap /mnt base base-devel linux linux-firmware vim git
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-cp base-chroot.sh /mnt/home/base-chroot.sh
+cp base-chroot.sh /mnt/base-chroot.sh 
 
-chmod +x /mnt/home/base-chroot.sh
+chmod +x /mnt/base-chroot.sh
 
-arch-chroot /mnt && cd home && ./base-chroot.sh
+arch-chroot /mnt bash base-chroot.sh
