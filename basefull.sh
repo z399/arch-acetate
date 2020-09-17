@@ -26,4 +26,9 @@ cp base-chroot.sh /mnt/base-chroot.sh
 
 chmod +x /mnt/base-chroot.sh
 
-arch-chroot /mnt bash base-chroot.sh
+arch-chroot /mnt bash base-chroot.sh && rm /mnt/base-chroot.sh
+
+umount -R /mnt
+
+reboot
+
