@@ -26,4 +26,4 @@ cp base-chroot.sh /mnt/home/base-chroot.sh
 
 chmod +x /mnt/home/base-chroot.sh
 
-arch-chroot /mnt 
+arch-chroot /mnt && cd home && ./base-chroot.sh
