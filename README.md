@@ -4,5 +4,3 @@
 chmod +x basefull.sh && ./basefull.sh
 (make the bash executable and run)
 
-In chroot environment: cd home && ./base-chroot.sh
-```
