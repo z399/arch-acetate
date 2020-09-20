@@ -24,7 +24,7 @@ mount /dev/sda1 /mnt/boot/efi
 
 pacman -Syy
 
-pacstrap /mnt base base-devel linux linux-firmware vim git
+pacstrap /mnt base base-devel linux linux-firmware vim git #amd-ucode intel-ucode
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
