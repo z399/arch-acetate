@@ -10,11 +10,17 @@ mkfs.fat -F32 /dev/sda1
 
 mkfs.ext4 /dev/sda2
 
-mount /dev/sda2 /mnt 
+#mkfs.ext4 /dev/sda3
+
+mount /dev/sda2 /mnt
 
 mkdir -p /mnt/boot/efi 
 
+#mkdir /mnt/home
+
 mount /dev/sda1 /mnt/boot/efi
+
+#mount /dev/sd3 /mnt/home
 
 pacman -Syy
 
