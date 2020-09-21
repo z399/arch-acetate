@@ -20,7 +20,7 @@ mkdir -p /mnt/boot/efi
 
 mount /dev/sda1 /mnt/boot/efi
 
-#mount /dev/sd3 /mnt/home
+#mount /dev/sda3 /mnt/home
 
 pacman -Syy
 
