@@ -38,6 +38,8 @@ passwd nebula
 
 EDITOR=vim visudo
 
+exit
+
 
 
 
