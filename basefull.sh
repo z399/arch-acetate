@@ -1,5 +1,3 @@
-pacman -Syy
-
 ping -c 1 protonmail.com
 
 timedatectl set-ntp true
@@ -21,8 +19,6 @@ mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 
 #mount /dev/sda3 /mnt/home
-
-pacman -Syy
 
 pacstrap /mnt base base-devel linux linux-firmware vim git #amd-ucode intel-ucode
 
