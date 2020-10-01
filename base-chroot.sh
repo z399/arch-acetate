@@ -24,7 +24,7 @@ echo milkyway >> /etc/hostname
 
 passwd 
 
-pacman -S grub efibootmgr networkmanager --noconfirm
+pacman -S grub efibootmgr networkmanager --needed --noconfirm
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
