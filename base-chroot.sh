@@ -26,23 +26,17 @@ passwd
 
 pacman -S grub efibootmgr networkmanager --needed --noconfirm
 
-pacman -S zsh zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions --needed --noconfirm
-
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
 grub-mkconfig -o /boot/grub/grub.cfg 
 
 systemctl enable NetworkManager 
 
-useradd -mG wheel -s /bin/zsh nebula
-
-#useradd -mG wheel nebula
+useradd -mG wheel nebula
 
 passwd nebula
 
 EDITOR=vim visudo
-
-curl https://raw.githubusercontent.com/nebulaxyz/dwm-dots/master/.zshrc > /$HOME/.zshrc
 
 exit
 
