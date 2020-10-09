@@ -1,4 +1,4 @@
-dd if=/dev/zero of=/swapfile bs=1G count=2 status=progress
+dd if=/dev/zero of=/swapfile bs=1G count=1 status=progress
 
 chmod 600 /swapfile
 
