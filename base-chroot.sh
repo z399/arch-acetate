@@ -28,8 +28,6 @@ pacman -S grub efibootmgr networkmanager --needed --noconfirm
 
 pacman -S zsh zsh-syntax-highlighting zsh-history-substring-search zsh-autosuggestions --needed --noconfirm
 
-curl https://raw.githubusercontent.com/nebulaxyz/dwm-dots/master/.zshrc > /$HOME/.zshrc
-
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
 grub-mkconfig -o /boot/grub/grub.cfg 
@@ -43,6 +41,8 @@ useradd -mG wheel -s /bin/zsh nebula
 passwd nebula
 
 EDITOR=vim visudo
+
+curl https://raw.githubusercontent.com/nebulaxyz/dwm-dots/master/.zshrc > /$HOME/.zshrc
 
 exit
 
