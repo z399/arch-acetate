@@ -24,7 +24,7 @@ echo milkyway >> /etc/hostname
 
 passwd 
 
-pacman -S grub efibootmgr networkmanager --needed --noconfirm
+pacman -S grub efibootmgr networkmanager zsh zsh-syntax-highlighting zsh-autosuggestions --needed --noconfirm
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
@@ -32,15 +32,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager 
 
-useradd -mG wheel nebula
+useradd -mG wheel -s /bin/zsh nebula 
 
 passwd nebula
 
 EDITOR=vim visudo
 
 exit
-
-
-
-
-
