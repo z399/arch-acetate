@@ -1,4 +1,4 @@
-ping -c 1 protonmail.com
+ping -c 1 nsa.gov
 
 timedatectl set-ntp true
 
@@ -20,7 +20,7 @@ mount /dev/sda1 /mnt/boot/efi
 
 #mount /dev/sda3 /mnt/home
 
-pacstrap /mnt base base-devel linux linux-firmware vim git #amd-ucode intel-ucode
+pacstrap /mnt base base-devel linux-hardened linux-firmware vim git #amd-ucode intel-ucode
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -33,4 +33,3 @@ arch-chroot /mnt bash base-chroot.sh && rm /mnt/base-chroot.sh
 umount -R /mnt
 
 reboot
-
