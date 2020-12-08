@@ -4,21 +4,27 @@ timedatectl set-ntp true
 
 cfdisk
 
-mkfs.fat -F32 /dev/sda1 
+lsblk && read -p "EFI partition : " efi
 
-mkfs.ext4 /dev/sda2
+read -p "root partition : " root
 
-#mkfs.ext4 /dev/sda3
+#read -p "home partition : " home
 
-mount /dev/sda2 /mnt
+mkfs.fat -F32 /dev/$efi 
+
+mkfs.ext4 /dev/$root
+
+#mkfs.ext4 /dev/$home
+
+mount /dev/$root /mnt
 
 mkdir -p /mnt/boot/efi 
 
 #mkdir /mnt/home
 
-mount /dev/sda1 /mnt/boot/efi
+mount /dev/$efi /mnt/boot/efi
 
-#mount /dev/sda3 /mnt/home
+#mount /dev/$home /mnt/home
 
 pacstrap /mnt base base-devel linux-hardened linux-firmware vim git #amd-ucode intel-ucode
 
