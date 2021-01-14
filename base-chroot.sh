@@ -24,7 +24,7 @@ echo milkyway >> /etc/hostname
 
 passwd 
 
-pacman -S grub efibootmgr networkmanager zsh zsh-syntax-highlighting zsh-autosuggestions --needed --noconfirm
+pacman -Sy grub efibootmgr networkmanager zsh zsh-syntax-highlighting zsh-autosuggestions --needed --noconfirm
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
@@ -36,6 +36,8 @@ useradd -mG wheel -s /bin/zsh nebula
 
 passwd nebula
 
-EDITOR=vim visudo
+echo "root ALL=(ALL) ALL 
+%wheel ALL=(ALL) ALL 
+@includedir /etc/sudoers.d" > /etc/sudoers
 
 exit
