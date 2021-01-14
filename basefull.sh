@@ -8,7 +8,7 @@ read -p "Drive name (eg: sda,vda,nvme0) : " drive
 
 cfdisk /dev/$drive 
 
-lsblk $drive && read -p "EFI partition : " efi
+lsblk /dev/$drive && read -p "EFI partition : " efi
 
 read -p "root partition : " root
 
