@@ -2,9 +2,11 @@ ping -c 1 nsa.gov
 
 timedatectl set-ntp true
 
-read -p "Drive name (eg: /dev/sda) : " drive
+lsblk
 
-cfdisk $drive 
+read -p "Drive name (eg: sda,vda,nvme0) : " drive
+
+cfdisk /dev/$drive 
 
 lsblk $drive && read -p "EFI partition : " efi
 
