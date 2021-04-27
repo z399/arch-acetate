@@ -1,3 +1,13 @@
+read -p "Enter Hostname : " hostname 
+
+
+read -p "Enter Username: " username
+
+
+/bin/echo -e '\n\n' "\e[1;32mGENERATING SWAPFILE.........\e[0m"
+
+sleep 1
+
 dd if=/dev/zero of=/swapfile bs=1G count=1 status=progress
 
 chmod 600 /swapfile
@@ -20,7 +30,7 @@ locale-gen
 
 echo LANG=en_US.UTF-8 >> /etc/locale.conf 
 
-echo milkyway >> /etc/hostname
+echo $hostname >> /etc/hostname
 
 passwd 
 
@@ -34,7 +44,7 @@ systemctl enable NetworkManager
 
 useradd -mG wheel -s /bin/zsh nebula 
 
-passwd nebula
+passwd $username
 
 echo "root ALL=(ALL) ALL 
 %wheel ALL=(ALL) ALL 
