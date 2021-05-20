@@ -10,7 +10,7 @@ cfdisk /dev/$drive
 
 lsblk /dev/$drive && read -p "EFI partition : " efi
 
-read -p "root partition : " root
+read -p "Root partition : " root
 
 #read -p "home partition : " home
 
