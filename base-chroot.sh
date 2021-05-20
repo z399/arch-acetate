@@ -1,8 +1,28 @@
-read -p "Enter Hostname : " hostname 
+read -p "Enter Hostname : " HOSTNAME 
 
 
-read -p "Enter Username: " username
+read -p "Enter Username: " USERNAME
 
+
+clear
+
+
+printf '
+Africa/Abidjan 
+America/Adak 
+America/Los_Angeles 
+Antarctica/Casey  
+Asia/Kolkata 
+Asia/Tokyo 
+Atlantic/Bermuda 
+Australia/Lord_Howe 
+Europe/Amsterdam 
+Indian/Kerguelen
+Pacific/Chuuk 
+UTC
+'
+
+read -p "Enter Timezone: " TIMEZONE 
 
 /bin/echo -e '\n\n' "\e[1;32mGENERATING SWAPFILE.........\e[0m"
 
@@ -18,7 +38,7 @@ swapon /swapfile
 
 echo  "/swapfile	none	swap	defaults	0 0" >> /etc/fstab
 
-ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 
 hwclock --systohc
 
@@ -30,7 +50,7 @@ locale-gen
 
 echo LANG=en_US.UTF-8 >> /etc/locale.conf 
 
-echo $hostname >> /etc/hostname
+echo $HOSTNAME >> /etc/hostname
 
 passwd 
 
@@ -42,9 +62,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager 
 
-useradd -mG wheel -s /bin/zsh nebula 
+useradd -mG wheel -s /bin/zsh $USERNAME
 
-passwd $username
+passwd $USERNAME
 
 echo "root ALL=(ALL) ALL 
 %wheel ALL=(ALL) ALL 
