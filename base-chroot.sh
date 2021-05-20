@@ -20,6 +20,7 @@ Europe/Amsterdam
 Indian/Kerguelen
 Pacific/Chuuk 
 UTC
+
 '
 
 read -p "Enter Timezone: " TIMEZONE 
