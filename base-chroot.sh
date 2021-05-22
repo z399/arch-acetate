@@ -32,11 +32,11 @@ UTC
 
 read -p "Enter Timezone: " TIMEZONE 
 
-#read -p "Swap File size (eg: 1,2,4,8) : " SWFS 
+read -p "Swap File size in Megabytes (eg: 1024,2048,4096,8192) : " SWFS 
 
 /bin/echo -e '\n\n' "\e[1;32mGENERATING SWAPFILE.........\e[0m"
 
-dd if=/dev/zero of=/swapfile bs=1G count=1 status=progress
+dd if=/dev/zero of=/swapfile bs=1M count=${SWFS} status=progress
 
 chmod 600 /swapfile
 
