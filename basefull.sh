@@ -37,7 +37,11 @@ case "$model" in
     *AMD*) CPUUCODE="amd-ucode";;	
 esac
 
-printf "$CPUUCODE"
+printf "
+
+$CPUUCODE
+
+"
 
 pacstrap /mnt base base-devel linux-lts linux-firmware vim git $CPUUCODE
 
