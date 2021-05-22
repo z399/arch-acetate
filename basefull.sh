@@ -30,7 +30,7 @@ mount /dev/$efi /mnt/boot/efi
 
 #mount /dev/$home /mnt/home
 
-pacstrap /mnt base base-devel linux-hardened linux-firmware vim git #amd-ucode intel-ucode
+pacstrap /mnt base base-devel linux-lts linux-firmware vim git #amd-ucode intel-ucode
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
