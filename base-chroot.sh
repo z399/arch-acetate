@@ -9,27 +9,36 @@ clear
 
 printf '
 Africa/Abidjan 
+Africa/Casablanca
 America/Adak 
 America/Los_Angeles 
 Antarctica/Casey  
+Antarctica/Vostok
 Asia/Kolkata 
 Asia/Tokyo 
 Atlantic/Bermuda 
+Atlantic/Reykjavik
 Australia/Lord_Howe 
+Australia/Melbourne
 Europe/Amsterdam 
+Europe/Istanbul
 Indian/Kerguelen
+Indian/Reunion
 Pacific/Chuuk 
+Pacific/Wake
 UTC
 
 '
 
 read -p "Enter Timezone: " TIMEZONE 
 
+read -p "Swap File size (eg: 1,2,4,8) : " SWFS 
+
 /bin/echo -e '\n\n' "\e[1;32mGENERATING SWAPFILE.........\e[0m"
 
 sleep 1
 
-dd if=/dev/zero of=/swapfile bs=1G count=1 status=progress
+dd if=/dev/zero of=/swapfile bs=${SWFS}G count=1 status=progress
 
 chmod 600 /swapfile
 
