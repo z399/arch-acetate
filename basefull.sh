@@ -30,7 +30,16 @@ mount /dev/$efi /mnt/boot/efi
 
 #mount /dev/$home /mnt/home
 
-pacstrap /mnt base base-devel linux-lts linux-firmware vim git #amd-ucode intel-ucode
+model=$(lscpu | grep 'Model name')
+
+case "$model" in
+    *Intel*) CPUUCODE="intel-ucode" ;;
+    *AMD*) CPUUCODE="amd-ucode";;	
+esac
+
+printf "$CPUUCODE"
+
+pacstrap /mnt base base-devel linux-lts linux-firmware vim git $CPUUCODE
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
