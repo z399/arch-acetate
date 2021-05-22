@@ -36,8 +36,6 @@ read -p "Swap File size (eg: 1,2,4,8) : " SWFS
 
 /bin/echo -e '\n\n' "\e[1;32mGENERATING SWAPFILE.........\e[0m"
 
-sleep 1
-
 dd if=/dev/zero of=/swapfile bs=${SWFS}G count=1 status=progress
 
 chmod 600 /swapfile
