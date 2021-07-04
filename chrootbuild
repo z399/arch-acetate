@@ -41,7 +41,7 @@ read -p "Enter Timezone: " TIMEZONE
 
 
 /bin/echo -e '\n\n' "\e[1;32mGENERATING SWAPFILE.........\e[0m"
-
+echo -e '\n'                                        
 
 dd if=/dev/zero of=/swapfile bs=1G count=${SWPFILE} status=progress
 chmod 600 /swapfile
@@ -65,10 +65,14 @@ passwd
 pacman -Sy grub efibootmgr networkmanager terminus-font zsh zsh-syntax-highlighting zsh-autosuggestions --needed --noconfirm
 echo "FONT=ter-g18b" >> /etc/vconsole.conf
 echo "FONT_MAP=8859-2" >> /etc/vconsole.conf
+clear
+/bin/echo -e '\n\n' "\e[1;33mInstalling GRUB..\e[0m"
+echo -e '\n'                                        
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg 
 systemctl enable NetworkManager 
 useradd -mG wheel -s /bin/zsh $USERNAME
+clear
 /bin/echo -e '\n\n' "\e[1;33mEnter user password\e[0m"
 echo -e '\n'                                        
 passwd $USERNAME
