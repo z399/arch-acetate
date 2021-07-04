@@ -54,9 +54,9 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 
 CHR_CRY() {
-cp base-chroot.sh /mnt/base-chroot.sh 
-chmod +x /mnt/base-chroot.sh
-arch-chroot /mnt bash base-chroot.sh && rm /mnt/base-chroot.sh
+cp chrootbuild /mnt/chrootbuild 
+chmod +x /mnt/chrootbuild 
+arch-chroot /mnt bash chrootbuild && rm /mnt/chrootbuild
 }
 
 CLOSG(){
