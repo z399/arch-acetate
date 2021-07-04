@@ -2,6 +2,9 @@
 
 # Installation
 
+**Warning**
+
+###### While partitioning with cfdisk, create two partitions only ie, EFI and ROOT. Or make your own tweaks before running it
 
 ```
 chmod +x basebuild && ./basebuild
