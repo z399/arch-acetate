@@ -1,0 +1,98 @@
+#!/bin/bash
+
+PART_INT() {
+ping -c 1 nsa.gov
+/bin/echo -e '\n\n' "\e[1;36mSTARTING SCRIPT...\e[0m"
+sleep 1
+clear
+/bin/echo -e '\n\n' "\e[1;36mENTER THE FOLLOWING PARAMETERS...\e[0m"
+timedatectl set-ntp true
+echo -e '\n'                                        
+lsblk
+echo -e '\n'                                        
+read -p "Drive name (eg: sda,vda,nvme0) : " DRIVE
+cfdisk /dev/$DRIVE 
+clear
+echo -e '\n'                                        
+lsblk /dev/$DRIVE 
+echo -e '\n'                                        
+read -p "EFI partition : " EFI
+echo -e '\n'                                        
+read -p "Root partition : " ROOT
+#echo -e '\n'                                        
+#read -p "home partition : " HOME
+}
+
+FRT_MAIN() {
+clear && /bin/echo -e '\n\n' "\e[1;32mFormating Drives...\e[0m"
+mkfs.fat -F32 /dev/$EFI 
+mkfs.ext4 /dev/$ROOT
+#mkfs.ext4 /dev/$HOME
+mount /dev/$ROOT /mnt
+mkdir -p /mnt/boot/efi 
+#mkdir /mnt/home
+mount /dev/$EFI /mnt/boot/efi
+#mount /dev/$HOME /mnt/home
+}
+
+
+SYS_GRD() {
+model=$(lscpu | grep 'Model name')
+
+case "$model" in
+    *Intel*) CPUUCODE="intel-ucode" ;;
+    *AMD*) CPUUCODE="amd-ucode";;	
+esac
+
+echo -e '\n'                                        
+printf "$CPUUCODE"
+echo -e '\n'                                        
+
+pacstrap /mnt base base-devel linux-lts linux-firmware vim git $CPUUCODE
+genfstab -U /mnt >> /mnt/etc/fstab
+}
+
+
+CHR_CRY() {
+cp base-chroot.sh /mnt/base-chroot.sh 
+chmod +x /mnt/base-chroot.sh
+arch-chroot /mnt bash base-chroot.sh && rm /mnt/base-chroot.sh
+}
+
+CLOSG(){
+umount -R /mnt
+clear 
+/bin/echo -e '\n\n' "\e[1;32mINSTALLATION COMPLETED!...\e[0m"
+sleep 1
+/bin/echo -e '\n\n' "\e[1;32mREBOOTING IN ..3\e[0m"
+sleep 1
+/bin/echo -e '\n\n' "\e[1;32mREBOOTING IN ..2\e[0m"
+sleep 1
+/bin/echo -e '\n\n' "\e[1;32mREBOOTING IN ..1\e[0m"
+sleep 1
+/bin/echo -e '\n\n' "\e[1;31mREBOOTING NOW......
+\e[0m"
+reboot
+}
+
+
+#starting point
+PART_INT
+FRT_MAIN
+SYS_GRD
+CHR_CRY
+CLOSG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
