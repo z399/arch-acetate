@@ -49,7 +49,7 @@ echo -e '\n'
 printf "$CPUUCODE"
 echo -e '\n'                                        
 
-pacstrap /mnt base base-devel linux-lts linux-firmware vim git $CPUUCODE
+pacstrap /mnt base base-devel linux linux-firmware vim git $CPUUCODE
 genfstab -U /mnt >> /mnt/etc/fstab
 }
 
