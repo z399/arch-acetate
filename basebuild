@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PART_INT() {
-ping -c 1 nsa.gov
+ping -c 1 archlinux.org
 /bin/echo -e '\n\n' "\e[1;36mSTARTING SCRIPT...\e[0m"
 sleep 1
 clear
