@@ -20,7 +20,7 @@ read -p "EFI partition : " EFI
 echo -e '\n'                                        
 read -p "Root partition : " ROOT
 #echo -e '\n'                                        
-#read -p "home partition : " HOME
+#read -p "Home partition : " HOME
 }
 
 FRT_MAIN() {
