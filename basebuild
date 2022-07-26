@@ -19,8 +19,8 @@ echo -e '\n'
 read -p "EFI partition : " EFI
 echo -e '\n'                                        
 read -p "Root partition : " ROOT
-#echo -e '\n'                                        
-#read -p "Home partition : " HOME
+echo -e '\n'                                        
+read -p "Home partition : " HOME
 }
 
 FRT_MAIN() {
@@ -28,12 +28,12 @@ clear && /bin/echo -e '\n\n' "\e[1;32mFormating Drives...\e[0m"
 echo -e '\n'                                        
 mkfs.fat -F32 /dev/$EFI 
 mkfs.ext4 /dev/$ROOT
-#mkfs.ext4 /dev/$HOME
+mkfs.ext4 /dev/$HOME
 mount /dev/$ROOT /mnt
 mkdir -p /mnt/boot/efi 
-#mkdir /mnt/home
+mkdir /mnt/home
 mount /dev/$EFI /mnt/boot/efi
-#mount /dev/$HOME /mnt/home
+mount /dev/$HOME /mnt/home
 }
 
 
@@ -48,7 +48,8 @@ esac
 echo -e '\n'                                        
 printf "$CPUUCODE"
 echo -e '\n'                                        
-
+/bin/echo -e '\n\n' "\e[1;36mUPDATING KEYRING...\e[0m"
+pacman -Sy archlinux-keyring ----noconfirm
 pacstrap /mnt base base-devel linux linux-firmware vim git $CPUUCODE
 genfstab -U /mnt >> /mnt/etc/fstab
 }
