@@ -75,5 +75,7 @@ echo -e '\n'
 passwd $USERNAME
 
 # Configure sudoers file
-echo "root ALL=(ALL) ALL \n%wheel ALL=(ALL) ALL \n@includedir /etc/sudoers.d" > /etc/sudoers
+echo "root ALL=(ALL) ALL 
+%wheel ALL=(ALL) ALL 
+@includedir /etc/sudoers.d" > /etc/sudoers
 exit
