@@ -6,6 +6,8 @@ PART_INT() {
     ping -c 1 archlinux.org
     /bin/echo -e '\n\n\e[1;36mSTARTING SCRIPT...\e[0m'
     sleep 1
+    /bin/echo -e '\n\n\e[1;36mSETTING FONT...\e[0m'
+    setfont ter-132b
     clear
     /bin/echo -e '\n\n\e[1;36mENTER THE FOLLOWING PARAMETERS...\e[0m'
     timedatectl set-ntp true
