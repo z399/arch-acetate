@@ -1,19 +1,19 @@
 #!/bin/bash
 
+# Clear the terminal
 clear
-/bin/echo -e '\n\n' "\e[1;36mRUNNING IN CHROOT ENVIRONMENT...\e[0m"
+
+# Prompt for information
+echo -e '\n\n' "\e[1;36mRUNNING IN CHROOT ENVIRONMENT...\e[0m"
 echo -e '\n'                                        
 read -p "Enter Hostname : " HOSTNAME 
 echo -e '\n'                                        
 read -p "Enter Username: " USERNAME
 echo -e '\n'                                        
 read -p "Swapfile size (eg: 2,4,8) : " SWPFILE
-
-
-
 clear
 
-
+# Display timezone options and read input
 printf '
 Africa/Abidjan 
 Africa/Casablanca
@@ -34,51 +34,46 @@ Indian/Reunion
 Pacific/Chuuk 
 Pacific/Wake
 UTC
-
 '
-
 read -p "Enter Timezone: " TIMEZONE 
 
-
+# Setup swapfile and configure system settings
 /bin/echo -e '\n\n' "\e[1;32mGENERATING SWAPFILE.........\e[0m"
 echo -e '\n'                                        
-
 dd if=/dev/zero of=/swapfile bs=1G count=${SWPFILE} status=progress
 chmod 600 /swapfile
 mkswap /swapfile
 swapon /swapfile
-echo  "/swapfile	none	swap	defaults	0 0" >> /etc/fstab
-
-
+echo "/swapfile	none	swap	defaults	0 0" >> /etc/fstab
 ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 hwclock --systohc
-echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
-echo en_US ISO-8859-1 >> /etc/locale.gen
+echo -e 'en_US.UTF-8 UTF-8\nen_US ISO-8859-1' >> /etc/locale.gen
 locale-gen
-echo LANG=en_US.UTF-8 >> /etc/locale.conf 
+echo 'LANG=en_US.UTF-8' >> /etc/locale.conf 
 echo $HOSTNAME >> /etc/hostname
-/bin/echo -e '\n\n' "\e[1;33mEnter root password\e[0m"
+
+# Set root password
+/bin/echo -e '\n\n' "\e[1;33mENTER ROOT PASSWORD\e[0m"
 echo -e '\n'                                        
 passwd 
 
-
+# Install necessary packages and configure GRUB
 pacman -Sy grub efibootmgr networkmanager terminus-font zsh zsh-syntax-highlighting zsh-autosuggestions --needed --noconfirm
-echo "FONT=ter-g18b" >> /etc/vconsole.conf
-echo "FONT_MAP=8859-2" >> /etc/vconsole.conf
+echo "FONT=ter-g18b\nFONT_MAP=8859-2" >> /etc/vconsole.conf
 clear
 /bin/echo -e '\n\n' "\e[1;33mInstalling GRUB..\e[0m"
 echo -e '\n'                                        
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg 
 systemctl enable NetworkManager 
+
+# Set user password
 useradd -mG wheel -s /bin/zsh $USERNAME
 clear
-/bin/echo -e '\n\n' "\e[1;33mEnter user password\e[0m"
+/bin/echo -e '\n\n' "\e[1;33mENTER USER PASSWORD\e[0m"
 echo -e '\n'                                        
 passwd $USERNAME
 
-echo "root ALL=(ALL) ALL 
-%wheel ALL=(ALL) ALL 
-@includedir /etc/sudoers.d" > /etc/sudoers
-
+# Configure sudoers file
+echo "root ALL=(ALL) ALL \n%wheel ALL=(ALL) ALL \n@includedir /etc/sudoers.d" > /etc/sudoers
 exit
