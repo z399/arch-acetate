@@ -6,9 +6,9 @@ clear
 # Prompt for information
 echo -e '\n\n' "\e[1;36mRUNNING IN CHROOT ENVIRONMENT...\e[0m"
 echo -e '\n'                                        
-read -p "Enter Hostname : " HOSTNAME 
+read -p "ENTER HOSTNAME : " HOSTNAME 
 echo -e '\n'                                        
-read -p "Enter Username: " USERNAME
+read -p "ENTER USERNAME: " USERNAME
 echo -e '\n'                                        
 read -p "Swapfile size (eg: 2,4,8) : " SWPFILE
 clear
