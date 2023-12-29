@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 /bin/echo -e '\n\n\e[1;36mRUNNING ARCH ACETATE as in TRENBOLONE ACETATE... :)\e[0m'
-sleep 2
+sleep 1
 /bin/echo -e '\n\n\e[1;36mDOWNLOADING REQUIRED SCRIPTS, PLEASE WAIT..!!\e[0m'
 sleep 1
 curl https://raw.githubusercontent.com/nawthing/arch-acetate/master/chrootbuild > chrootbuild
