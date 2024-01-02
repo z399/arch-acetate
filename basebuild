@@ -19,8 +19,10 @@ PART_INT() {
     timedatectl set-ntp true
     echo -e '\n'                                        
     lsblk
-    echo -e '\n'                                        
+    echo -e '\n' 
     read -p "Drive name (eg: sda, vda, nvme0): " DRIVE
+    /bin/echo -e '\n\n\e[1;36mCREATE THREE PARTITIONS IN CFDISK (EFI,ROOT,HOME)\e[0m'
+    sleep 1
     cfdisk "/dev/$DRIVE"
     clear
     echo -e '\n'                                        
