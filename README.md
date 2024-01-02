@@ -7,6 +7,6 @@
 ###### Make your own tweaks before running it
 
 ```
-chmod +x arch.sh && ./arch.sh
+chmod +x basebuild && ./basebuild
 (make the bash executable and run)
 
