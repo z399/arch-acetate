@@ -20,9 +20,8 @@ PART_INT() {
     echo -e '\n'                                        
     lsblk
     echo -e '\n' 
-    read -p "Drive name (eg: sda, vda, nvme0): " DRIVE
     /bin/echo -e '\n\n\e[1;36mCREATE THREE PARTITIONS IN CFDISK (EFI,ROOT,HOME)\e[0m'
-    sleep 1
+    read -p "Drive name (eg: sda, vda, nvme0): " DRIVE
     cfdisk "/dev/$DRIVE"
     clear
     echo -e '\n'                                        
