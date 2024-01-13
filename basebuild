@@ -4,7 +4,7 @@ clear
 sleep 1
 /bin/echo -e '\n\n\e[1;36mDOWNLOADING REQUIRED SCRIPTS, PLEASE WAIT..!!\e[0m'
 sleep 1
-curl https://raw.githubusercontent.com/nawthing/arch-acetate/master/chrootbuild > chrootbuild
+curl https://raw.githubusercontent.com/z399/arch-acetate/master/chrootbuild > chrootbuild
 clear
 # Function to gather partition information
 PART_INT() {
