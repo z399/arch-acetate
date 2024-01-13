@@ -78,4 +78,5 @@ passwd $USERNAME
 echo "root ALL=(ALL) ALL 
 %wheel ALL=(ALL) ALL 
 @includedir /etc/sudoers.d" > /etc/sudoers
+sleep 1
 exit
