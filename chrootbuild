@@ -57,7 +57,8 @@ echo $HOSTNAME >> /etc/hostname
 echo -e '\n'                                        
 passwd 
 
-# Install necessary packages and configure GRUB
+# Installing necessary packages and configuring system settings
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf
 pacman -Sy grub efibootmgr networkmanager terminus-font zsh zsh-syntax-highlighting zsh-autosuggestions --needed --noconfirm
 echo "FONT=ter-g18b\nFONT_MAP=8859-2" >> /etc/vconsole.conf
 clear
