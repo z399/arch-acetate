@@ -64,7 +64,7 @@ SYS_GRD() {
     echo -e '\n'                                        
     /bin/echo -e '\n\n\e[1;36mUPDATING KEYRING...\e[0m'
     pacman -Sy archlinux-keyring --noconfirm
-    pacstrap /mnt base base-devel linux linux-firmware vim git "$CPUUCODE"
+    pacstrap -K /mnt base base-devel linux-lts linux-firmware vim git "$CPUUCODE"
     genfstab -U /mnt >> /mnt/etc/fstab
 }
 
